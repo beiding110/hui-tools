@@ -1,0 +1,46 @@
+<!--index.wxml-->
+<view class="container">  
+  <view class="result">
+    {{result}}
+    <view class="result-util">万元</view>
+  </view>
+
+  <van-cell-group class="form-content">
+    <van-cell 
+      title="计算类型" 
+      value="{{ form.type || '请选择' }}"
+      icon="cluster-o"
+      bind:click="typeClickHandler"
+    ></van-cell>
+    
+
+    <van-field
+      type="number"
+      input-align="right"
+      value="{{ form.number }}"
+      data-model="form.number"
+      bind:change="vmodel"
+      left-icon="gold-coin-o"
+      label="计算金额"
+      border="{{ false }}"
+    >
+      <view slot="button">万元</view>
+    </van-field>
+  </van-cell-group>
+
+  <van-button type="primary" block bind:click="calcNum" class="btn-calc">计算</van-button>
+
+  <van-popup
+  show="{{ popupShow }}"
+  position="bottom">
+    <van-picker 
+      columns="{{ columns }}" 
+      bind:change="onChange" 
+      show-toolbar
+      bind:cancel="onCancel"
+      bind:confirm="onConfirm"
+    />
+  </van-popup>
+
+  <van-dialog id="van-dialog" />
+</view>

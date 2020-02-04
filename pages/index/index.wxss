@@ -1,0 +1,6 @@
+.result{text-align:center; font-size:50px; color:#07C160; font-weight:bolder;}
+.result-util{display:inline; font-size:30px; color:black;}
+
+.form-content .van-cell-group{margin-bottom:1em;}
+
+.btn-calc .van-button--block{}
