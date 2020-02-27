@@ -226,11 +226,11 @@ module.exports = [
           }, {
             from: 500,
             to: 2000,
-            rate: 0.0014
+            rate: 0.0016
           }, {
             from: 2000,
             to: 10000,
-            rate: 0.0016
+            rate: 0.0014
           }, {
             from: 10000,
             to: 'infinity',
