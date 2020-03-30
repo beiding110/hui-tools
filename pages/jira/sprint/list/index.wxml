@@ -1,0 +1,127 @@
+<view>
+  <van-tabs animated>
+    <van-tab title="待办({{tableData_todo.length}})">
+      <van-swipe-cell 
+      left-width="{{ 120 }}" 
+      right-width="{{ 120 }}" 
+      wx:for="{{ tableData_todo }}" 
+      wx:key="*this">
+        <view slot="left">
+          <van-button 
+            square 
+            type="warning" 
+            bindclick="movetoHandler"
+            data-data="{{ item }}" 
+            data-type="doing" 
+            data-rowguid="{{ item.rowguid }}">
+            处理中
+          </van-button>
+          <van-button 
+            square 
+            type="primary" 
+            bindclick="movetoHandler" 
+            data-data="{{ item }}"
+            data-type="done" 
+            data-rowguid="{{ item.rowguid }}">
+            完成
+          </van-button>
+        </view>
+        <van-cell-group>
+          <van-cell value="{{ item.addtime }}">
+            <view slot="title">
+              <van-icon name="{{ item.grade.icon }}" color="{{ item.grade.color }}" />
+              <van-icon name="{{ item.type.icon }}" color="{{ item.type.color }}" />
+              {{ item.title }}
+            </view>
+          </van-cell>
+        </van-cell-group>
+        <view slot="right">
+          <van-button square type="default" bindclick="editHandler" data-rowguid="{{ item.rowguid }}">编辑</van-button>
+          <van-button square type="danger" bindclick="delHandler" data-rowguid="{{ item.rowguid }}">删除</van-button>
+        </view>
+      </van-swipe-cell>
+    </van-tab>
+    <van-tab title="处理中({{tableData_doing.length}})">
+      <van-swipe-cell 
+        left-width="{{ 120 }}" 
+        right-width="{{ 60 }}" 
+        wx:for="{{ tableData_doing }}" 
+        wx:key="*this">
+          <view slot="left">
+            <van-button 
+              square 
+              type="default" 
+              bindclick="movetoHandler"
+              data-data="{{ item }}" 
+              data-type="todo" 
+              data-rowguid="{{ item.rowguid }}">
+              待办
+            </van-button>
+            <van-button 
+              square 
+              type="primary" 
+              bindclick="movetoHandler" 
+              data-data="{{ item }}"
+              data-type="done" 
+              data-rowguid="{{ item.rowguid }}">
+              完成
+            </van-button>
+          </view>
+          <van-cell-group>
+            <van-cell value="{{ item.addtime }}">
+              <view slot="title">
+                <van-icon name="{{ item.grade.icon }}" color="{{ item.grade.color }}" />
+                <van-icon name="{{ item.type.icon }}" color="{{ item.type.color }}" />
+                {{ item.title }}
+              </view>
+            </van-cell>
+          </van-cell-group>
+          <view slot="right">
+            <van-button square type="default" bindclick="editHandler" data-rowguid="{{ item.rowguid }}">编辑</van-button>
+          </view>
+        </van-swipe-cell>
+    </van-tab>
+    <van-tab title="完成({{tableData_done.length}})">
+      <van-swipe-cell 
+        left-width="{{ 120 }}" 
+        right-width="{{ 60 }}" 
+        wx:for="{{ tableData_done }}" 
+        wx:key="*this">
+          <view slot="left">
+            <van-button 
+              square 
+              type="default" 
+              bindclick="movetoHandler" 
+              data-data="{{ item }}"
+              data-type="todo" 
+              data-rowguid="{{ item.rowguid }}">
+              待办
+            </van-button>
+            <van-button 
+              square 
+              type="warning" 
+              bindclick="movetoHandler"
+              data-data="{{ item }}" 
+              data-type="doing" 
+              data-rowguid="{{ item.rowguid }}">
+              处理中
+            </van-button>
+          </view>
+          <van-cell-group>
+            <van-cell value="{{ item.addtime }}">
+              <view slot="title">
+                <van-icon name="{{ item.grade.icon }}" color="{{ item.grade.color }}" />
+                <van-icon name="{{ item.type.icon }}" color="{{ item.type.color }}" />
+                {{ item.title }}
+              </view>
+            </van-cell>
+          </van-cell-group>
+          <view slot="right">
+            <van-button square type="danger" bindclick="delHandler" data-rowguid="{{ item.rowguid }}">删除</van-button>
+          </view>
+        </van-swipe-cell>
+    </van-tab>
+  </van-tabs>
+
+  <btn-fixed type="primary" bindtap="addHandler"></btn-fixed>
+</view>

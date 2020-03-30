@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view class="container">
+  <van-cell-group class="form-content">    
+    <van-field
+      input-align="right"
+      value="{{ form.proname }}"
+      data-model="form.proname"
+      bind:change="vmodel"
+      left-icon="edit"
+      label="项目名称"
+      border="{{ false }}"
+    ></van-field>
+  </van-cell-group>
+
+  <van-button type="primary" block bind:click="saveHandler" class="btn-calc">保存</van-button>
+</view>

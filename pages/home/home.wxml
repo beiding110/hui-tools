@@ -1,0 +1,18 @@
+<van-cell-group 
+wx:for="{{ tableData }}" 
+wx:for-item="group" 
+wx:for-index="index"
+wx:key="*this"
+title="{{ group.title }}"
+>
+  <van-cell 
+  wx:for="{{ group.child }}"
+  wx:for-item="item"
+  wx:for-index="index"
+  wx:key="*this"
+  title="{{ item.title }}" 
+  icon="{{ item.icon }}" 
+  is-link 
+  bindtap="toDetail" 
+  data-url="{{ item.url }}"/>
+</van-cell-group>

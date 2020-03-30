@@ -1,0 +1,19 @@
+<view>
+  <van-swipe-cell 
+  class="sprint-swipe-cell"
+  right-width="{{ 120 }}" 
+  wx:for="{{ tableData }}" 
+  wx:key="*this"
+  bindclick="gotoSprint"
+  data-rowguid="{{ item.rowguid }}">
+    <van-cell-group>
+      <van-cell title="{{ item.proname }}" value="{{ item.addtime }}"/>
+    </van-cell-group>
+    <view slot="right">
+      <van-button square class="{{ 'sprint-button' }}" type="default" bindclick="editHandler" data-rowguid="{{ item.rowguid }}">编辑</van-button>
+      <van-button square class="{{ 'sprint-button' }}" type="danger" bindclick="delHandler" data-rowguid="{{ item.rowguid }}">删除</van-button>
+    </view>
+  </van-swipe-cell>
+
+  <btn-fixed type="primary" bindtap="addHandler"></btn-fixed>
+</view>

@@ -1,0 +1,52 @@
+<!--index.wxml-->
+<view class="container">
+  <van-cell-group class="form-content">    
+    <van-field
+      input-align="right"
+      value="{{ form.title }}"
+      data-model="form.title"
+      bind:change="vmodel"
+      left-icon="edit"
+      label="概要"
+      border="{{ false }}"
+    ></van-field>
+    <van-field
+      input-align="right"
+      value="{{ form.detail }}"
+      data-model="form.detail"
+      bind:change="vmodel"
+      left-icon="comment-o"
+      label="描述"
+      border="{{ false }}"
+    ></van-field>
+
+    <van-cell 
+      title="类型" 
+      value="{{ form.type.value || '请选择' }}"
+      icon="cluster-o"
+      bind:click="typeClickHandler"
+      data-type="type"
+    ></van-cell>
+    <van-cell 
+      title="等级" 
+      value="{{ form.grade.value || '请选择' }}"
+      icon="question-o"
+      bind:click="typeClickHandler"
+      data-type="grade"
+    ></van-cell>
+  </van-cell-group>
+
+  <van-popup
+  show="{{ popupShow }}"
+  position="bottom">
+    <van-picker 
+      columns="{{ columns }}" 
+      bind:change="onChange" 
+      show-toolbar
+      bind:cancel="onCancel"
+      bind:confirm="onConfirm"
+    />
+  </van-popup>
+
+  <van-button type="primary" block bind:click="saveHandler" class="btn-calc">保存</van-button>
+</view>
