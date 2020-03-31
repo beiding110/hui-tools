@@ -7,15 +7,6 @@ Page({
   data: {
     tableData: [
       {
-        title: '项目管理',
-        child: [
-          {
-            title: 'jira',
-            icon: 'orders-o',
-            url: '/pages/jira/project/list/index'
-          }
-        ]
-      }, {
         title: '造价',
         child: [
           {

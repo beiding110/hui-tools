@@ -29,29 +29,15 @@ component_1.VantComponent({
                     return;
                 }
                 this.observeContainer();
+                this.updateFixed();
             }
         }
     },
     data: {
-        wrapStyle: '',
-        containerStyle: ''
+        height: 0,
+        fixed: false
     },
     methods: {
-        setStyle: function () {
-            var _a = this.data, offsetTop = _a.offsetTop, height = _a.height, fixed = _a.fixed, zIndex = _a.zIndex;
-            if (fixed) {
-                this.setData({
-                    wrapStyle: "top: " + offsetTop + "px;",
-                    containerStyle: "height: " + height + "px; z-index: " + zIndex + ";"
-                });
-            }
-            else {
-                this.setData({
-                    wrapStyle: '',
-                    containerStyle: ''
-                });
-            }
-        },
         getContainerRect: function () {
             var nodesRef = this.data.container();
             return new Promise(function (resolve) {
@@ -66,6 +52,17 @@ component_1.VantComponent({
                 wx.nextTick(function () {
                     _this.observeContent();
                     _this.observeContainer();
+                });
+            });
+        },
+        updateFixed: function () {
+            var _this = this;
+            Promise.all([this.getRect(ROOT_ELEMENT), this.getContainerRect()]).then(function (_a) {
+                var content = _a[0], container = _a[1];
+                _this.setData({ height: content.height });
+                _this.containerHeight = container.height;
+                wx.nextTick(function () {
+                    _this.setFixed(content.top);
                 });
             });
         },
@@ -84,9 +81,8 @@ component_1.VantComponent({
             var offsetTop = this.data.offsetTop;
             this.disconnectObserver('contentObserver');
             var contentObserver = this.createIntersectionObserver({
-                thresholds: [0, 1]
+                thresholds: [0.9, 1]
             });
-            this.contentObserver = contentObserver;
             contentObserver.relativeToViewport({ top: -offsetTop });
             contentObserver.observe(ROOT_ELEMENT, function (res) {
                 if (_this.data.disabled) {
@@ -94,6 +90,7 @@ component_1.VantComponent({
                 }
                 _this.setFixed(res.boundingClientRect.top);
             });
+            this.contentObserver = contentObserver;
         },
         observeContainer: function () {
             var _this = this;
@@ -105,7 +102,7 @@ component_1.VantComponent({
                 _this.containerHeight = rect.height;
                 _this.disconnectObserver('containerObserver');
                 var containerObserver = _this.createIntersectionObserver({
-                    thresholds: [0, 1]
+                    thresholds: [0.9, 1]
                 });
                 _this.containerObserver = containerObserver;
                 containerObserver.relativeToViewport({
@@ -120,20 +117,16 @@ component_1.VantComponent({
             });
         },
         setFixed: function (top) {
-            var _this = this;
             var _a = this.data, offsetTop = _a.offsetTop, height = _a.height;
             var containerHeight = this.containerHeight;
             var fixed = containerHeight && height
-                ? top > height - containerHeight && top < offsetTop
+                ? top >= height - containerHeight && top < offsetTop
                 : top < offsetTop;
             this.$emit('scroll', {
                 scrollTop: top,
                 isFixed: fixed
             });
             this.setData({ fixed: fixed });
-            wx.nextTick(function () {
-                _this.setStyle();
-            });
         }
     },
     mounted: function () {

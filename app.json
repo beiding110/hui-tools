@@ -1,18 +1,33 @@
 {
   "navigationBarTitleText": "惠工具",
   "pages": [
-    "pages/home/home",
-    "pages/index/index",
     "pages/jira/project/list/index",
     "pages/jira/project/form/index",
     "pages/jira/sprint/list/index",
-    "pages/jira/sprint/form/index"
+    "pages/jira/sprint/form/index",
+    "pages/home/index",
+    "pages/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/jira/project/list/index",
+        "iconPath": "assets/icon/jira.png",
+        "selectedIconPath": "assets/icon/jira-active.png",
+        "text": "jira"
+      }, {
+        "pagePath": "pages/home/index",
+        "iconPath": "assets/icon/laboratory.png",
+        "selectedIconPath": "assets/icon/laboratory-active.png",
+        "text": "实验室"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {

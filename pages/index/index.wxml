@@ -28,7 +28,7 @@
     </van-field>
   </van-cell-group>
 
-  <van-button type="primary" block bind:click="calcNum" class="btn-calc">计算</van-button>
+  <van-button type="primary" block bind:click="calcNum" class="btn-form_block">计算</van-button>
 
   <van-popup
   show="{{ popupShow }}"

@@ -7,7 +7,11 @@
   bindclick="gotoSprint"
   data-rowguid="{{ item.rowguid }}">
     <van-cell-group>
-      <van-cell title="{{ item.proname }}" value="{{ item.addtime }}"/>
+      <van-cell value="{{ item.addtime }}">
+        <view slot="title">
+          {{ item.proname }}
+        </view>
+      </van-cell>
     </van-cell-group>
     <view slot="right">
       <van-button square class="{{ 'sprint-button' }}" type="default" bindclick="editHandler" data-rowguid="{{ item.rowguid }}">编辑</van-button>

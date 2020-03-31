@@ -24,13 +24,16 @@ Page({
   },
   getList() {
     var list_todo = db.getDB('t_sprint', {
-      dobj: 0
+      dobj: 0,
+      procode: this.data.procode
     });
     var list_doing = db.getDB('t_sprint', {
-      dobj: 1
+      dobj: 1,
+      procode: this.data.procode
     });
     var list_done = db.getDB('t_sprint', {
-      dobj: 2
+      dobj: 2,
+      procode: this.data.procode
     });
     this.setData({
       tableData_todo: list_todo,
@@ -40,6 +43,7 @@ Page({
   },
   editHandler(e) {
     var search = util.toSearch({
+      procode: this.data.procode,
       rowguid: e.currentTarget.dataset.rowguid
     });
     wx.navigateTo({

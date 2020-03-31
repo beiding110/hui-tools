@@ -12,5 +12,5 @@
     ></van-field>
   </van-cell-group>
 
-  <van-button type="primary" block bind:click="saveHandler" class="btn-calc">保存</van-button>
+  <van-button type="primary" block bind:click="saveHandler" class="btn-form_block">保存</van-button>
 </view>

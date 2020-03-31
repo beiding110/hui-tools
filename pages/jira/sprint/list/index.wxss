@@ -1,1 +1,14 @@
 /* pages/jira/sprint/list/index.wxss */
+.sprint-item_body{padding:.8em 1em;}
+.sprint-item_body-head{font-size:16px;}
+.sprint-item_body-head text{}
+
+.sprint-item_body-foot{font-size:12px;}
+.sprint-item_body-foot .van-icon{width:16px; text-align:center;}
+.sprint-item_body-foot text{color:#969799;}
+
+.sprint-item_body-head, .sprint-item_body-foot{display:flex; align-items:center;}
+.sprint-item_body-head text, .sprint-item_body-foot text{margin-left:5px;}
+
+.sprint-item-btn-group{height:100%;}
+.sprint-item-btn-group .van-button{height:100%;}
