@@ -17,6 +17,22 @@ Page({
   },
   getList() {
     var list = db.getDB('t_project');
+    list.forEach(item => {
+      item.todo = db.getDB('t_sprint', {
+        dobj: 0,
+        procode: item.rowguid
+      }).length;
+      item.doing = db.getDB('t_sprint', {
+        dobj: 1,
+        procode: item.rowguid
+      }).length;
+      item.done = db.getDB('t_sprint', {
+        dobj: 2,
+        procode: item.rowguid
+      }).length;
+      item.icontext = item.proname ? item.proname.slice(0,1) : 'null';
+      item.iconcolor = item.rowguid.slice(0,6);
+    })
     this.setData({
       tableData: list
     });

@@ -66,6 +66,7 @@ Page({
         data.dobj = 1;
       },
       done() {
+        data.donetime = util.formatTime(new Date())
         data.dobj = 2;
       }
     };

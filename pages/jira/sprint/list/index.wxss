@@ -9,6 +9,3 @@
 
 .sprint-item_body-head, .sprint-item_body-foot{display:flex; align-items:center;}
 .sprint-item_body-head text, .sprint-item_body-foot text{margin-left:5px;}
-
-.sprint-item-btn-group{height:100%;}
-.sprint-item-btn-group .van-button{height:100%;}

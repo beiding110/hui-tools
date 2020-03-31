@@ -16,3 +16,6 @@ page, .container {
 } 
 
 .btn-form_block{min-width:296px;}
+
+.sprint-item-btn-group{height:100%;}
+.sprint-item-btn-group .van-button{height:100%;}

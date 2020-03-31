@@ -116,7 +116,7 @@
             </view>
             <view class="sprint-item_body-foot">
               <van-icon name="{{ item.grade.icon }}" color="{{ item.grade.color }}" />
-              <text>{{ item.addtime }}</text>
+              <text>{{ item.addtime }} - {{ item.donetime }}</text>
             </view>
           </view>
           <view slot="right" class="sprint-item-btn-group">
