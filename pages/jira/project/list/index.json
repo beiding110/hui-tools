@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "jira项目列表",
   "usingComponents": {
-    
+    "icon-empty": "/components/icon-empty/index"
   }
 }

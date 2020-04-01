@@ -17,10 +17,26 @@
       </view>
     </view>
     <view slot="right" class="sprint-item-btn-group">
-      <van-button square class="{{ 'sprint-button' }}" type="default" bindclick="editHandler" data-rowguid="{{ item.rowguid }}">编辑</van-button>
-      <van-button square class="{{ 'sprint-button' }}" type="danger" bindclick="delHandler" data-rowguid="{{ item.rowguid }}">删除</van-button>
+      <van-button 
+        square 
+        class="{{ 'sprint-button' }}" 
+        type="default" 
+        bindclick="editHandler" 
+        data-rowguid="{{ item.rowguid }}">
+        编辑
+      </van-button>
+      <van-button 
+        square 
+        class="{{ 'sprint-button' }}" 
+        type="danger" 
+        bindclick="delHandler" 
+        data-rowguid="{{ item.rowguid }}">
+        删除
+      </van-button>
     </view>
   </van-swipe-cell>
+
+  <icon-empty wx:if="{{ !tableData.length }}" text="没有内容哦，快添加一条吧~"/>
 
   <btn-fixed type="primary" bindtap="addHandler"></btn-fixed>
 </view>
