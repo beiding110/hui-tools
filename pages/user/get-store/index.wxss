@@ -1,0 +1,6 @@
+/* pages/user/get-store/index.wxss */
+.message{text-align:center;}
+.title .text{color:#969799; border-bottom:1px solid #969799; padding:10px 0;}
+.info{margin-top:20px;}
+.info .text{font-size:26px; font-weight:bolder;}
+.info .num{font-size:30px; font-weight:bolder; color:#07C160;}

@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view class="container">
+  <van-cell-group class="form-content">    
+    <van-field
+      input-align="right"
+      value="{{ data }}"
+      data-model="data"
+      bind:change="vmodel"
+      left-icon="edit"
+      autosize
+      label="数据"
+    ></van-field>
+  </van-cell-group>
+
+  <van-button type="primary" block bind:click="saveHandler" class="btn-form_block">保存</van-button>
+</view>

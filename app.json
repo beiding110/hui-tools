@@ -6,7 +6,9 @@
     "pages/jira/sprint/list/index",
     "pages/jira/sprint/form/index",
     "pages/home/index",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/user/set-store/index",
+    "pages/user/get-store/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,7 +23,8 @@
         "iconPath": "assets/icon/jira.png",
         "selectedIconPath": "assets/icon/jira-active.png",
         "text": "jira"
-      }, {
+      },
+      {
         "pagePath": "pages/home/index",
         "iconPath": "assets/icon/laboratory.png",
         "selectedIconPath": "assets/icon/laboratory-active.png",

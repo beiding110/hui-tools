@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class="container">  
+  <view class="message">
+    <view class="title">
+      <text class="text">占用空间</text>
+    </view>
+    <view class="info">
+      <text class="num">{{ currentSize }}</text>
+      <text class="text">kb</text>
+    </view>
+  </view>
+
+  <van-button type="primary" block bind:click="copyHandler" class="btn-form_block">复制</van-button>
+</view>

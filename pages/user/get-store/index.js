@@ -1,41 +1,32 @@
-// pages/home/home.js
+// pages/user/get-store/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tableData: [
-      {
-        title: '造价',
-        child: [
-          {
-            title: '河北省建设工程造价咨询服务项目收费计算器',
-            icon: 'refund-o-o',
-            url: '/pages/index/index'
-          }
-        ]
-      }, {
-        title: '系统',
-        child: [
-          {
-            title: '导出数据',
-            icon: 'description',
-            url: '/pages/user/get-store/index'
-          }, {
-            title: '导入数据',
-            icon: 'records',
-            url: '/pages/user/set-store/index'
-          }
-        ]
-      }
-    ]
+    data: {},
+    currentSize: ''
   },
+  getStore() {
+    const res = wx.getStorageInfoSync();
 
-  toDetail(e) {
-    wx.navigateTo({
-      url: e.currentTarget.dataset.url
+    this.setData({
+      data: res,
+      currentSize: res.currentSize
     });
+  },
+  copyHandler() {
+    const res = this.data.data;
+    var data = {};
+    res.keys.forEach(key => {
+      if (key === 'logs') return;
+      data[key] = wx.getStorageSync(key)
+    });
+
+    wx.setClipboardData({
+      data: JSON.stringify(data)
+    })
   },
 
   /**
@@ -56,7 +47,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getStore();
   },
 
   /**

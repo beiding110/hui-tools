@@ -1,41 +1,36 @@
-// pages/home/home.js
+// pages/user/set-store/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tableData: [
-      {
-        title: '造价',
-        child: [
-          {
-            title: '河北省建设工程造价咨询服务项目收费计算器',
-            icon: 'refund-o-o',
-            url: '/pages/index/index'
-          }
-        ]
-      }, {
-        title: '系统',
-        child: [
-          {
-            title: '导出数据',
-            icon: 'description',
-            url: '/pages/user/get-store/index'
-          }, {
-            title: '导入数据',
-            icon: 'records',
-            url: '/pages/user/set-store/index'
-          }
-        ]
-      }
-    ]
+    data: ''
   },
+  vmodel(event) {
+    var obj = {};
+    obj[event.target.dataset.model] = event.detail;
+    this.setData(obj);
+  },
+  saveHandler() {
+    var json;
+    try{
+      json = JSON.parse(this.data.data);
+    }catch(e) {
+      wx.showModal({
+        title: '错误',
+        content: '请检查数据格式'
+      });
+    };
 
-  toDetail(e) {
-    wx.navigateTo({
-      url: e.currentTarget.dataset.url
+    Object.keys(json).forEach(table => {
+      wx.setStorageSync(table, json[table]);
     });
+    wx.showModal({
+      title: '成功',
+      content: '导入数据完成'
+    });
+    wx.navigateBack();
   },
 
   /**
