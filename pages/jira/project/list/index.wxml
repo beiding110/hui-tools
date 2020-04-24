@@ -21,7 +21,7 @@
         square 
         class="{{ 'sprint-button' }}" 
         type="default" 
-        bindclick="editHandler" 
+        catchtap="editHandler" 
         data-rowguid="{{ item.rowguid }}">
         编辑
       </van-button>
@@ -29,7 +29,7 @@
         square 
         class="{{ 'sprint-button' }}" 
         type="danger" 
-        bindclick="delHandler" 
+        catchtap="delHandler" 
         data-rowguid="{{ item.rowguid }}">
         删除
       </van-button>

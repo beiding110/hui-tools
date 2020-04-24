@@ -10,7 +10,7 @@
           <van-button 
             square 
             type="warning" 
-            bindclick="movetoHandler"
+            catchtap="movetoHandler"
             data-data="{{ item }}" 
             data-type="doing" 
             data-rowguid="{{ item.rowguid }}">
@@ -19,7 +19,7 @@
           <van-button 
             square 
             type="primary" 
-            bindclick="movetoHandler" 
+            catchtap="movetoHandler" 
             data-data="{{ item }}"
             data-type="done" 
             data-rowguid="{{ item.rowguid }}">
@@ -37,8 +37,8 @@
           </view>
         </view>
         <view slot="right" class="sprint-item-btn-group">
-          <van-button square type="default" bindclick="editHandler" data-rowguid="{{ item.rowguid }}">编辑</van-button>
-          <van-button square type="danger" bindclick="delHandler" data-rowguid="{{ item.rowguid }}">删除</van-button>
+          <van-button square type="default" catchtap="editHandler" data-rowguid="{{ item.rowguid }}">编辑</van-button>
+          <van-button square type="danger" catchtap="delHandler" data-rowguid="{{ item.rowguid }}">删除</van-button>
         </view>
       </van-swipe-cell>
     </van-tab>
@@ -52,7 +52,7 @@
             <van-button 
               square 
               type="default" 
-              bindclick="movetoHandler"
+              catchtap="movetoHandler"
               data-data="{{ item }}" 
               data-type="todo" 
               data-rowguid="{{ item.rowguid }}">
@@ -61,7 +61,7 @@
             <van-button 
               square 
               type="primary" 
-              bindclick="movetoHandler" 
+              catchtap="movetoHandler" 
               data-data="{{ item }}"
               data-type="done" 
               data-rowguid="{{ item.rowguid }}">
@@ -79,7 +79,7 @@
             </view>
           </view>
           <view slot="right" class="sprint-item-btn-group">
-            <van-button square type="default" bindclick="editHandler" data-rowguid="{{ item.rowguid }}">编辑</van-button>
+            <van-button square type="default" catchtap="editHandler" data-rowguid="{{ item.rowguid }}">编辑</van-button>
           </view>
         </van-swipe-cell>
     </van-tab>
@@ -93,7 +93,7 @@
             <van-button 
               square 
               type="default" 
-              bindclick="movetoHandler" 
+              catchtap="movetoHandler" 
               data-data="{{ item }}"
               data-type="todo" 
               data-rowguid="{{ item.rowguid }}">
@@ -102,7 +102,7 @@
             <van-button 
               square 
               type="warning" 
-              bindclick="movetoHandler"
+              catchtap="movetoHandler"
               data-data="{{ item }}" 
               data-type="doing" 
               data-rowguid="{{ item.rowguid }}">
@@ -120,7 +120,7 @@
             </view>
           </view>
           <view slot="right" class="sprint-item-btn-group">
-            <van-button square type="danger" bindclick="delHandler" data-rowguid="{{ item.rowguid }}">删除</van-button>
+            <van-button square type="danger" catchtap="delHandler" data-rowguid="{{ item.rowguid }}">删除</van-button>
           </view>
         </van-swipe-cell>
     </van-tab>
