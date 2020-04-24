@@ -1,7 +1,43 @@
 const util = require('./util.js')
 
+function DataRows () {
+  Array.apply(this, arguments);
+};
+(function() {
+  var Super = function () { }
+  Super.prototype = Array.prototype;
+  DataRows.prototype = new Super();
+  DataRows.prototype.leftJoin = function (table, where, [left_key, right_key], keys_to_join) {
+    var list = getDB(table, where),
+      map = {};
+    list.forEach(item => {
+      map[item[right_key]] = item;
+    });
+    this.map(item => {
+      keys_to_join.forEach(key => {
+        if (item[left_key] && map[item[left_key]] && map[item[left_key]][key]) {
+          item[key] = map[item[left_key]][key];
+        } else {
+          item[key] = null;
+        }
+      });
+    });
+    return this;
+  };
+  DataRows.prototype.stringify = function() {
+    var arr = [];
+    arr.push.apply(arr, this);
+    return JSON.stringify(arr);
+  };
+}());
+
 const setDB = (table, list) => {
-  var jsonStr = JSON.stringify(list);
+  var jsonStr = '';
+  try{
+    jsonStr = list.stringify();
+  } catch(e) {
+    jsonStr = JSON.stringify(list);
+  };
   try {
     wx.setStorageSync(table, jsonStr);
   } catch (e) {
@@ -13,8 +49,8 @@ const setDB = (table, list) => {
 
 const getDB = (table, where) => {
   try {
-    var value = wx.getStorageSync(table),
-      res = [];
+    var value = wx.getStorageSync(table);
+    var res = new DataRows;
     if (value) {
       var json = JSON.parse(value),
         listNotDel = [];
