@@ -1,5 +1,4 @@
 {
-  "navigationBarTitleText": "惠工具",
   "pages": [
     "pages/jira/project/list/index",
     "pages/jira/project/form/index",
@@ -14,7 +13,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "惠工具",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

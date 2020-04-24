@@ -5,7 +5,7 @@
       left-width="{{ 134 }}" 
       right-width="{{ 120 }}" 
       wx:for="{{ tableData_todo }}" 
-      wx:key="*this">
+      wx:key="rowguid">
         <view slot="left" class="sprint-item-btn-group">
           <van-button 
             square 
@@ -47,7 +47,7 @@
         left-width="{{ 120 }}" 
         right-width="{{ 60 }}" 
         wx:for="{{ tableData_doing }}" 
-        wx:key="*this">
+        wx:key="rowguid">
           <view slot="left" class="sprint-item-btn-group">
             <van-button 
               square 
@@ -88,7 +88,7 @@
         left-width="{{ 134 }}" 
         right-width="{{ 60 }}" 
         wx:for="{{ tableData_done }}" 
-        wx:key="*this">
+        wx:key="rowguid">
           <view slot="left" class="sprint-item-btn-group">
             <van-button 
               square 
