@@ -47,8 +47,41 @@ Page({
   },
   delHandler(e) {
     var rowguid = e.currentTarget.dataset.rowguid;
+
+    var sprintsInPro = this.getSprintInPro(rowguid);
+
+    if (sprintsInPro.length) {
+      wx.showModal({
+        title: '同时删除项目内的问题？',
+        content: '选择“是”，将会同时删除该项目内包含的全部问题',
+        cancelText: '否',
+        confirmText: '是',
+        success: ({ confirm, cancel }) => {
+          if (confirm) {
+            this.delSprintInPro(sprintsInPro);
+            this.delProject(rowguid);
+          } else {
+            this.delProject(rowguid);
+          };
+        }
+      });
+    } else {
+      this.delProject(rowguid);
+    };
+  },
+  delProject(rowguid) {
     db.deleteDB('t_project', rowguid);
     this.getList();
+  },
+  delSprintInPro(sprints) {
+    sprints.forEach(item => {
+      db.deleteDB('t_sprint', item.rowguid);
+    });
+  },
+  getSprintInPro(rowguid) {
+    return db.getDB('t_sprint', {
+      procode: rowguid
+    });
   },
   gotoSprint(e) {
     var search = util.toSearch({
