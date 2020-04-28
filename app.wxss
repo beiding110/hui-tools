@@ -19,3 +19,7 @@ page, .container {
 
 .sprint-item-btn-group{height:100%;}
 .sprint-item-btn-group .van-button{height:100%;}
+
+view.table{display:table; border-left:1px solid #ebedf0; border-top:1px solid #ebedf0;}
+view.tr{display:table-row;}
+view.td{display:table-cell; border-right:1px solid #ebedf0; border-bottom:1px solid #ebedf0; padding:.3em .5em; vertical-align:middle;}

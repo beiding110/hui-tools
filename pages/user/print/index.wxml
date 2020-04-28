@@ -1,0 +1,32 @@
+<van-dropdown-menu>
+  <van-dropdown-item 
+  value="{{ procodeOpt }}" 
+  options="{{ procodeOpts }}" 
+  onchange="changeHandler"
+  data-model="procodeOpt"/>
+  <van-dropdown-item 
+  value="{{ dobjOpt }}" 
+  options="{{ dobjOpts }}" 
+  onchange="changeHandler"
+  data-model="dobjOpt"/>
+</van-dropdown-menu>
+
+<view class="table">
+  <view class="tr">
+    <view class="td">项目</view>
+    <view class="td">标题</view>
+    <view class="td">时间</view>
+    <view class="td">状态</view>
+  </view>
+  <view class="tr" wx:for="{{ tableData }}" wx:key="rowguid">
+    <view class="td">{{ item.proname }}</view>
+    <view class="td">{{ item.title }}</view>
+    <view class="td">
+      <view>{{ item.addtime }}</view>
+      <view>{{ item.donetime }}</view>
+    </view>
+    <view class="td">
+      <van-tag type="{{ item.tagType }}">{{ item.tagText }}</van-tag>
+    </view>
+  </view>
+</view>

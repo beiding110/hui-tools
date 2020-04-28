@@ -26,6 +26,10 @@ Page({
             title: '导入数据',
             icon: 'records',
             url: '/pages/user/set-store/index'
+          }, {
+            title: '打印',
+            icon: 'orders-o',
+            url: '/pages/user/print/index'
           }
         ]
       }

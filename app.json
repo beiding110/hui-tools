@@ -8,7 +8,8 @@
     "pages/index/index",
     "pages/user/set-store/index",
     "pages/user/get-store/index",
-    "pages/sprint-all/index"
+    "pages/sprint-all/index",
+    "pages/user/print/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,12 +24,14 @@
         "iconPath": "assets/icon/jira.png",
         "selectedIconPath": "assets/icon/jira-active.png",
         "text": "jira"
-      }, {
+      },
+      {
         "pagePath": "pages/sprint-all/index",
         "iconPath": "assets/icon/list.png",
         "selectedIconPath": "assets/icon/list-active.png",
         "text": "清单"
-      }, {
+      },
+      {
         "pagePath": "pages/home/index",
         "iconPath": "assets/icon/laboratory.png",
         "selectedIconPath": "assets/icon/laboratory-active.png",
@@ -50,6 +53,9 @@
     "van-tabs": "/miniprogram_npm/@vant/weapp/tabs/index",
     "van-panel": "/miniprogram_npm/@vant/weapp/panel/index",
     "van-icon": "/miniprogram_npm/@vant/weapp/icon/index",
+    "van-tag": "/miniprogram_npm/@vant/weapp/tag/index",
+    "van-dropdown-menu": "/miniprogram_npm/@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "/miniprogram_npm/@vant/weapp/dropdown-item/index",
     "btn-fixed": "/components/btn-fixed/index"
   }
 }

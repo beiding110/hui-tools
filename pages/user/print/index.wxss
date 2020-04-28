@@ -1,0 +1,2 @@
+/* pages/user/print/index.wxss */
+view.table{width:calc(100% - 20px); margin:0 10px; font-size:10px;}
