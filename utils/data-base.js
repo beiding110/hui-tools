@@ -75,11 +75,11 @@ const getDB = (table, where) => {
           object() {
             listNotDel.forEach(item => {
               if (Object.keys(where).every(key => {
-                if (util.getType(where[key]) === 'string') {
-                  return item[key] === where[key];
-                } else if (util.getType(where[key]) === 'array') {
+                if (util.getType(where[key]) === 'array') {
                   var whereContentKey = where[key].indexOf(item[key]) > -1;
                   return whereContentKey;
+                } else {
+                  return item[key] === where[key];
                 };
               })) {
                 res.push(item);
