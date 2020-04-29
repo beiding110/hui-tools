@@ -1,14 +1,28 @@
 <van-dropdown-menu>
-  <van-dropdown-item 
-  value="{{ procodeOpt }}" 
-  options="{{ procodeOpts }}" 
-  onchange="changeHandler"
-  data-model="procodeOpt"/>
-  <van-dropdown-item 
-  value="{{ dobjOpt }}" 
-  options="{{ dobjOpts }}" 
-  onchange="changeHandler"
-  data-model="dobjOpt"/>
+  <van-dropdown-item title="项目筛选">
+    <van-cell wx:for="{{ procodeOpts }}" wx:key="rowguid" title="{{ item.text }}">
+      <van-switch
+        slot="right-icon"
+        size="24px"
+        checked="{{ procodeSel[item.value] }}"
+        bind:change="proOptSwitchChange"
+        data-value="{{ item.value }}"
+        data-model="procodeSel"
+      />
+    </van-cell>
+  </van-dropdown-item>
+  <van-dropdown-item title="状态筛选">
+    <van-cell wx:for="{{ dobjOpts }}" wx:key="rowguid" title="{{ item.text }}">
+      <van-switch
+        slot="right-icon"
+        size="24px"
+        checked="{{ dobjSel[item.value] }}"
+        bind:change="proOptSwitchChange"
+        data-value="{{ item.value }}"
+        data-model="dobjSel"
+      />
+    </van-cell>
+  </van-dropdown-item>
 </van-dropdown-menu>
 
 <view class="table">

@@ -36,5 +36,20 @@ module.exports = {
       icon: 'arrow-down',
       color: '#55A557'
     }
+  ],
+  cols: [
+    {
+      text: '待办',
+      tag: 'primary',
+      dobj: 0
+    }, {
+      text: '处理中',
+      tag: 'warning',
+      dobj: 1
+    }, {
+      text: '完成',
+      tag: 'success',
+      dobj: 2
+    },
   ]
 }
