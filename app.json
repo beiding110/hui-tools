@@ -41,7 +41,6 @@
   },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
-    "van-swipe-cell": "/miniprogram_npm/@vant/weapp/swipe-cell/index",
     "van-cell": "/miniprogram_npm/@vant/weapp/cell/index",
     "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group/index",
     "van-field": "/miniprogram_npm/@vant/weapp/field/index",
@@ -49,14 +48,17 @@
     "van-picker": "/miniprogram_npm/@vant/weapp/picker/index",
     "van-button": "/miniprogram_npm/@vant/weapp/button/index",
     "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index",
-    "van-tab": "/miniprogram_npm/@vant/weapp/tab/index",
-    "van-tabs": "/miniprogram_npm/@vant/weapp/tabs/index",
     "van-panel": "/miniprogram_npm/@vant/weapp/panel/index",
     "van-icon": "/miniprogram_npm/@vant/weapp/icon/index",
     "van-tag": "/miniprogram_npm/@vant/weapp/tag/index",
     "van-dropdown-menu": "/miniprogram_npm/@vant/weapp/dropdown-menu/index",
     "van-dropdown-item": "/miniprogram_npm/@vant/weapp/dropdown-item/index",
     "van-switch": "/miniprogram_npm/@vant/weapp/switch/index",
-    "btn-fixed": "/components/btn-fixed/index"
+    "btn-fixed": "/components/btn-fixed/index",
+    "mp-cells": "/miniprogram_npm/weui-miniprogram/cells/cells",
+    "mp-cell": "/miniprogram_npm/weui-miniprogram/cell/cell",
+    "mp-slideview": "/miniprogram_npm/weui-miniprogram/slideview/slideview",
+    "mp-halfScreenDialog": "/miniprogram_npm/weui-miniprogram/half-screen-dialog/half-screen-dialog",
+    "mp-tabs": "/miniprogram_npm/@miniprogram-component-plus/tabs/index"
   }
 }

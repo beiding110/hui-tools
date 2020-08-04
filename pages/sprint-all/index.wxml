@@ -1,75 +1,23 @@
-<view>
-  <van-tabs animated>
-    <van-tab title="待办({{tableData_todo.length}})">
-      <van-swipe-cell 
-      left-width="{{ 134 }}" 
-      right-width="{{ 120 }}" 
-      wx:for="{{ tableData_todo }}" 
-      wx:key="rowguid">
-        <view slot="left" class="sprint-item-btn-group">
-          <van-button 
-            square 
-            type="warning" 
-            catchtap="movetoHandler"
-            data-data="{{ item }}" 
-            data-type="doing" 
-            data-rowguid="{{ item.rowguid }}">
-            处理中
-          </van-button>
-          <van-button 
-            square 
-            type="primary" 
-            catchtap="movetoHandler" 
-            data-data="{{ item }}"
-            data-type="done" 
-            data-rowguid="{{ item.rowguid }}">
-            完成
-          </van-button>
-        </view>
-        <view class="sprint-item_body van-hairline--bottom">
-          <view class="sprint-item_body-head">
-            <van-icon name="{{ item.type.icon }}" color="{{ item.type.color }}" />
-            <view>{{ item.title }}</view>
-
-            <view class="info-proname">【{{ item.proname }}】</view>
-          </view>
-          <view class="sprint-item_body-foot">
-            <van-icon name="{{ item.grade.icon }}" color="{{ item.grade.color }}" />
-            <text>{{ item.addtime }}</text>
-          </view>
-        </view>
-        <view slot="right" class="sprint-item-btn-group">
-          <van-button square type="default" catchtap="editHandler" data-rowguid="{{ item.rowguid }}">编辑</van-button>
-          <van-button square type="danger" catchtap="delHandler" data-rowguid="{{ item.rowguid }}">删除</van-button>
-        </view>
-      </van-swipe-cell>
-    </van-tab>
-    <van-tab title="处理中({{tableData_doing.length}})">
-      <van-swipe-cell 
-        left-width="{{ 120 }}" 
-        right-width="{{ 60 }}" 
-        wx:for="{{ tableData_doing }}" 
-        wx:key="rowguid">
-          <view slot="left" class="sprint-item-btn-group">
-            <van-button 
-              square 
-              type="default" 
-              catchtap="movetoHandler"
-              data-data="{{ item }}" 
-              data-type="todo" 
-              data-rowguid="{{ item.rowguid }}">
-              待办
-            </van-button>
-            <van-button 
-              square 
-              type="primary" 
-              catchtap="movetoHandler" 
-              data-data="{{ item }}"
-              data-type="done" 
-              data-rowguid="{{ item.rowguid }}">
-              完成
-            </van-button>
-          </view>
+<view class="page">
+  <mp-tabs 
+  tabs="{{tabs}}" 
+  swiperClass="weui-tabs-swiper"
+  tab-underline-color="#1AAD19"
+  >
+    <view slot="tab-content-0" class="tab-content">
+      <view>
+        <mp-slideview 
+        slot="tab-content-0"
+        class="sprint-swipe-cell"
+        buttons="{{ slideButtons_todo }}" 
+        wx:for="{{ tableData_todo }}" 
+        wx:key="rowguid"
+        bindlongtap="longTapHandler"
+        bindbuttontap="btnTapHandler"
+        data-rowguid="{{ item.rowguid }}"
+        data-data="{{ item }}"
+        data-state="todo"
+        >
           <view class="sprint-item_body van-hairline--bottom">
             <view class="sprint-item_body-head">
               <van-icon name="{{ item.type.icon }}" color="{{ item.type.color }}" />
@@ -82,37 +30,50 @@
               <text>{{ item.addtime }}</text>
             </view>
           </view>
-          <view slot="right" class="sprint-item-btn-group">
-            <van-button square type="default" catchtap="editHandler" data-rowguid="{{ item.rowguid }}">编辑</van-button>
+        </mp-slideview>
+      </view>
+    </view>
+    <view slot="tab-content-1" class="tab-content">
+      <view>
+        <mp-slideview 
+        class="sprint-swipe-cell"
+        buttons="{{ slideButtons_doing }}" 
+        wx:for="{{ tableData_doing }}" 
+        wx:key="rowguid"
+        bindlongtap="longTapHandler"
+        bindbuttontap="btnTapHandler"
+        data-rowguid="{{ item.rowguid }}"
+        data-data="{{ item }}"
+        data-state="doing"
+        >
+          <view class="sprint-item_body van-hairline--bottom">
+            <view class="sprint-item_body-head">
+              <van-icon name="{{ item.type.icon }}" color="{{ item.type.color }}" />
+              <view>{{ item.title }}</view>
+
+              <view class="info-proname">【{{ item.proname }}】</view>
+            </view>
+            <view class="sprint-item_body-foot">
+              <van-icon name="{{ item.grade.icon }}" color="{{ item.grade.color }}" />
+              <text>{{ item.addtime }}</text>
+            </view>
           </view>
-        </van-swipe-cell>
-    </van-tab>
-    <van-tab title="完成({{tableData_done.length}})">
-      <van-swipe-cell 
-        left-width="{{ 134 }}" 
-        right-width="{{ 60 }}" 
+        </mp-slideview>
+      </view>
+    </view>
+    <view slot="tab-content-2" class="tab-content">
+      <view>
+        <mp-slideview 
+        class="sprint-swipe-cell"
+        buttons="{{ slideButtons_done }}" 
         wx:for="{{ tableData_done }}" 
-        wx:key="rowguid">
-          <view slot="left" class="sprint-item-btn-group">
-            <van-button 
-              square 
-              type="default" 
-              catchtap="movetoHandler" 
-              data-data="{{ item }}"
-              data-type="todo" 
-              data-rowguid="{{ item.rowguid }}">
-              待办
-            </van-button>
-            <van-button 
-              square 
-              type="warning" 
-              catchtap="movetoHandler"
-              data-data="{{ item }}" 
-              data-type="doing" 
-              data-rowguid="{{ item.rowguid }}">
-              处理中
-            </van-button>
-          </view>
+        wx:key="rowguid"
+        bindlongtap="longTapHandler"
+        bindbuttontap="btnTapHandler"
+        data-rowguid="{{ item.rowguid }}"
+        data-data="{{ item }}"
+        data-state="done"
+        >
           <view class="sprint-item_body van-hairline--bottom">
             <view class="sprint-item_body-head">
               <van-icon name="{{ item.type.icon }}" color="{{ item.type.color }}" />
@@ -125,10 +86,16 @@
               <text>{{ item.addtime }} - {{ item.donetime }}</text>
             </view>
           </view>
-          <view slot="right" class="sprint-item-btn-group">
-            <van-button square type="danger" catchtap="delHandler" data-rowguid="{{ item.rowguid }}">删除</van-button>
-          </view>
-        </van-swipe-cell>
-    </van-tab>
-  </van-tabs>
+        </mp-slideview>
+      </view>
+    </view>
+  </mp-tabs>
+
+  <mp-halfScreenDialog 
+    bindbuttontap="hsDialogBtnTap"
+    show="{{hsDialogShow}}"
+    title="操作" 
+    subTitle="将该问题移至"
+    buttons="{{hsDialogBtns}}"
+  ></mp-halfScreenDialog>
 </view>

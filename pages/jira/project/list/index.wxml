@@ -1,11 +1,13 @@
 <view>
-  <van-swipe-cell 
+  <mp-slideview 
   class="sprint-swipe-cell"
-  right-width="{{ 120 }}" 
+  buttons="{{slideButtons}}" 
   wx:for="{{ tableData }}" 
   wx:key="rowguid"
-  bindclick="gotoSprint"
-  data-rowguid="{{ item.rowguid }}">
+  bindbuttontap="btnTapHandler"
+  bindtap="gotoSprint"
+  data-rowguid="{{ item.rowguid }}"
+  >
     <view class="pro-item van-hairline--top-bottom">
       <view class="item-icon" style="background-color:#{{ item.iconcolor }}">{{ item.icontext }}</view>
       <view class="item-content">
@@ -16,25 +18,7 @@
         </view>
       </view>
     </view>
-    <view slot="right" class="sprint-item-btn-group">
-      <van-button 
-        square 
-        class="{{ 'sprint-button' }}" 
-        type="default" 
-        catchtap="editHandler" 
-        data-rowguid="{{ item.rowguid }}">
-        编辑
-      </van-button>
-      <van-button 
-        square 
-        class="{{ 'sprint-button' }}" 
-        type="danger" 
-        catchtap="delHandler" 
-        data-rowguid="{{ item.rowguid }}">
-        删除
-      </van-button>
-    </view>
-  </van-swipe-cell>
+  </mp-slideview>
 
   <icon-empty wx:if="{{ !tableData.length }}" text="没有内容哦，快添加一条吧~"/>
 

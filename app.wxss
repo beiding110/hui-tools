@@ -1,7 +1,8 @@
 /**app.wxss**/
 @import "/miniprogram_npm/@vant/weapp/common/index.wxss";
+@import "/miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss";
 
-page, .container {
+page, .container, .page {
   height: 100%;
   width:100%;
 } 
@@ -23,3 +24,13 @@ page, .container {
 view.table{display:table; border-left:1px solid #ebedf0; border-top:1px solid #ebedf0;}
 view.tr{display:table-row;}
 view.td{display:table-cell; border-right:1px solid #ebedf0; border-bottom:1px solid #ebedf0; padding:.3em .5em; vertical-align:middle;}
+
+.weui-btn.warning{background-color:#FF976A; color:white;}
+.weui-btn.danger{background-color:#EE0A24; color:white;}
+.weui-btn.success{background-color:#07C160; color:white;}
+.weui-btn.info{background-color:white; color:#323233;}
+
+.weui-tabs{display:block; height:100%;}
+.weui-tabs-bar__title{margin:0 1em;}
+.tab-content{display:block; height:100%; overflow:auto;}
+.weui-tabs-swiper{height:calc(100% - 27px);}

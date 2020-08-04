@@ -8,11 +8,36 @@ Page({
    * 页面的初始数据
    */
   data: {
+    tabs: [],
+
     tableData_todo: [],
     tableData_doing: [],
     tableData_done: [],
 
-    procode: ''
+    procode: '',
+
+    slideButtons_todo: [{
+      text: '编辑',
+      extClass: 'sprint-button',
+    },{
+      type: 'warn',
+      text: '删除',
+      extClass: 'sprint-button',
+    }],
+    slideButtons_doing: [{
+      text: '编辑',
+      extClass: 'sprint-button',
+    }],
+    slideButtons_done: [{
+      type: 'warn',
+      text: '删除',
+      extClass: 'sprint-button',
+    }],
+
+    hsDialogShow: false,
+    hsDialogBtns: [],
+
+    longTapData: {}
   },
   addHandler() {
     var search = util.toSearch({
@@ -38,7 +63,17 @@ Page({
     this.setData({
       tableData_todo: list_todo,
       tableData_doing: list_doing,
-      tableData_done: list_done
+      tableData_done: list_done,
+
+      tabs: [
+        {
+          title: `待办(${list_todo.length})`
+        }, {
+          title: `处理中(${list_doing.length})`
+        }, {
+          title: `完成(${list_done.length})`
+        }
+      ]
     });
   },
   editHandler(e) {
@@ -73,6 +108,65 @@ Page({
     switchObj[type]();
     db.insertDB('t_sprint', data);
     this.getList();
+  },
+
+  btnTapHandler(e) {
+    var index = e.detail.index;
+    var switchObj = [this.editHandler, this.delHandler];
+    switchObj[index](e);
+  },
+  longTapHandler(e) {
+    var state = e.currentTarget.dataset.state;
+
+    var switchObj = {
+      'todo': [{
+        className: 'warning',
+        text: '处理中',
+        value: 'doing'
+      }, {
+        className: 'success',
+        text: '完成',
+        value: 'done'
+      }],
+      'doing': [{
+        className: 'info',
+        text: '待办',
+        value: 'todo'
+      }, {
+        className: 'success',
+        text: '完成',
+        value: 'done'
+      }],
+      'done': [{
+        className: 'info',
+        text: '待办',
+        value: 'todo'
+      }, {
+        className: 'warning',
+        text: '处理中',
+        value: 'doing'
+      }]
+    };
+
+    this.setData({
+      longTapData: e.currentTarget.dataset.data,
+      hsDialogBtns: switchObj[state],
+      hsDialogShow: true
+    })
+  },
+  hsDialogBtnTap(e) {
+    var type = e.detail.item.value;
+    this.movetoHandler({
+      currentTarget: {
+        dataset: {
+          data: this.data.longTapData,
+          type: type
+        }
+      }
+    });
+    this.setData({
+      hsDialogShow: false
+    });
   },
 
   /**

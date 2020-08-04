@@ -8,7 +8,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tableData: []
+    tableData: [],
+
+    slideButtons: [{
+      text: '编辑',
+      extClass: 'sprint-button',
+    },{
+      type: 'warn',
+      text: '删除',
+      extClass: 'sprint-button',
+    }]
   },
   addHandler() {
     wx.navigateTo({
@@ -90,6 +99,11 @@ Page({
     wx.navigateTo({
       url: '/pages/jira/sprint/list/index' + search
     });
+  },
+  btnTapHandler(e) {
+    var index = e.detail.index;
+    var switchObj = [this.editHandler, this.delHandler];
+    switchObj[index](e);
   },
 
   /**
