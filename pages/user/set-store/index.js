@@ -1,4 +1,7 @@
 // pages/user/set-store/index.js
+const ajax = require('../../../utils/ajax');
+const app = getApp();
+
 Page({
 
   /**
@@ -12,10 +15,11 @@ Page({
     obj[event.target.dataset.model] = event.detail;
     this.setData(obj);
   },
-  saveHandler() {
+
+  importHandler(str) {
     var json;
     try{
-      json = JSON.parse(this.data.data);
+      json = JSON.parse(str);
     }catch(e) {
       wx.showModal({
         title: '错误',
@@ -26,11 +30,23 @@ Page({
     Object.keys(json).forEach(table => {
       wx.setStorageSync(table, json[table]);
     });
-    wx.showModal({
-      title: '成功',
-      content: '导入数据完成'
+    wx.showToast({
+      title: '导入数据完成',
     });
+  },
+
+  saveHandler() {
+    this.importHandler(this.data.data);
+
     wx.navigateBack();
+  },
+
+  downloadHandler() {
+    ajax.get('/data/download', {
+      openid: app.globalData.openid,
+    }, (data, res) => {
+      this.importHandler(data);
+    })
   },
 
   /**

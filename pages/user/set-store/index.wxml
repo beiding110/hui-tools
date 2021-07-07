@@ -12,5 +12,9 @@
     ></van-field>
   </van-cell-group>
 
-  <van-button type="primary" block bind:click="saveHandler" class="btn-form_block">保存</van-button>
+  <view class="btn-form_block">
+    <van-button type="primary" block bind:click="saveHandler" class="btn">保存</van-button>
+    <view class="empty-line"></view>
+    <van-button type="info" block bind:click="downloadHandler" class="btn">同步云端数据</van-button>
+  </view>
 </view>

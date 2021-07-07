@@ -1,4 +1,6 @@
 //app.js
+const ajax = require('./utils/ajax');
+
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -10,6 +12,9 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        ajax.post('/user/getopenid', res, data => {
+          this.globalData.openid = data;
+        })
       }
     })
     // 获取用户信息
@@ -34,6 +39,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    openid: '',
   }
 })

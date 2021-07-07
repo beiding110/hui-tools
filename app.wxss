@@ -17,6 +17,7 @@ page, .container, .page {
 } 
 
 .btn-form_block{min-width:296px;}
+.empty-line{height: 10px;}
 
 .sprint-item-btn-group{height:100%;}
 .sprint-item-btn-group .van-button{height:100%;}

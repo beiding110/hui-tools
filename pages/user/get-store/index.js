@@ -1,4 +1,7 @@
 // pages/user/get-store/index.js
+const ajax = require('../../../utils/ajax');
+const app = getApp();
+
 Page({
 
   /**
@@ -16,7 +19,8 @@ Page({
       currentSize: res.currentSize
     });
   },
-  copyHandler() {
+
+  exportHandler() {
     const res = this.data.data;
     var data = {};
     res.keys.forEach(key => {
@@ -24,8 +28,24 @@ Page({
       data[key] = wx.getStorageSync(key)
     });
 
+    return JSON.stringify(data);
+  },
+
+  copyHandler() {
     wx.setClipboardData({
-      data: JSON.stringify(data)
+      data: this.exportHandler(),
+    })
+  },
+
+  uploadHandler() {
+
+    ajax.post('/data/upload', {
+      openid: app.globalData.openid,
+      data: this.exportHandler(),
+    }, (data, res) => {
+      wx.showToast({
+        title: res.msg,
+      });
     })
   },
 

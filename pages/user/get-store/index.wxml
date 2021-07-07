@@ -10,5 +10,9 @@
     </view>
   </view>
 
-  <van-button type="primary" block bind:click="copyHandler" class="btn-form_block">复制</van-button>
+  <view class="btn-form_block">
+    <van-button type="primary" block bind:click="copyHandler" class="btn">复制</van-button>
+    <view class="empty-line"></view>
+    <van-button type="info" block bind:click="uploadHandler" class="btn">同步到云端</van-button>
+  </view>
 </view>
