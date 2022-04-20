@@ -9,3 +9,5 @@
 
 .sprint-item_body-head, .sprint-item_body-foot{display:flex; align-items:center;}
 .sprint-item_body-head text, .sprint-item_body-foot text{margin-left:5px;}
+
+.dialog-slider-con{margin: 1em; overflow: visible;}

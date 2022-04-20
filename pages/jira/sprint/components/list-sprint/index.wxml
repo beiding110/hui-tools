@@ -1,0 +1,61 @@
+<view>
+    <mp-slideview 
+    class="sprint-swipe-cell" 
+    buttons="{{ buttons }}" 
+    wx:for="{{ data }}" 
+    wx:key="rowguid" 
+    bindlongtap="longTapHandler" 
+    bindbuttontap="btnTapHandler" 
+    data-rowguid="{{ item.rowguid }}" 
+    data-procode="{{ item.procode }}"
+    data-data="{{ item }}" 
+    data-index="{{ index }}" 
+    data-type="{{ type }}"
+    >
+        <view class="sprint-item_body van-hairline--bottom">
+            <view class="sprint-item_body-head">
+                <van-icon name="{{ item.type.icon }}" color="{{ item.type.color }}" />
+
+                <view class="title">{{ item.title }}</view>
+
+                <view 
+                class="info-proname"
+                wx:if="{{ item.proname }}"
+                >
+                    【{{ item.proname }}】
+                </view>
+            </view>
+
+            <view class="sprint-item_body-foot">
+                <van-icon name="{{ item.grade.icon }}" color="{{ item.grade.color }}" />
+                <text class="time">{{ item.addtime }}</text>
+            </view>
+
+            <view 
+            wx-if="{{ item.progress && item.progress.value > 0 && item.progress.value < 100 }}"
+            class="sprint-item_body-end"
+            >
+                <van-progress 
+                    percentage="{{ item.progress.value }}" 
+                    color="#07C160"
+                    stroke-width="2px"
+                    show-pivot="{{false}}"
+                />
+            </view>
+        </view>
+    </mp-slideview>
+</view>
+
+<mp-halfScreenDialog show="{{hsDialogShow}}" buttons="{{ dialogBtns }}" bind:buttontap="hsDialogBtnTap">
+    <view slot="title">操作</view>
+
+    <view wx:if="{{dialogSlider}}" slot="desc" class="dialog-slider-con">
+        <van-slider 
+            value="{{longTapData.progress.value || 0}}" 
+            step="1" 
+            bind:change="sliderChangeHandler" 
+            bar-height="24px" 
+            active-color="#07C160"
+        ></van-slider>
+    </view>
+</mp-halfScreenDialog>

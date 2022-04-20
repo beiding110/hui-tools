@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "mp-slideview": "/miniprogram_npm/weui-miniprogram/slideview/slideview",
+        "van-progress": "/miniprogram_npm/@vant/weapp/progress/index"
+    }
+}
