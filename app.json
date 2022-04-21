@@ -4,11 +4,11 @@
     "pages/jira/project/form/index",
     "pages/jira/sprint/list/index",
     "pages/jira/sprint/form/index",
+    "pages/jira/sprint/all/index",
     "pages/home/index",
     "pages/index/index",
     "pages/user/set-store/index",
     "pages/user/get-store/index",
-    "pages/sprint-all/index",
     "pages/user/print/index"
   ],
   "window": {
@@ -26,7 +26,7 @@
         "text": "jira"
       },
       {
-        "pagePath": "pages/sprint-all/index",
+        "pagePath": "pages/jira/sprint/all/index",
         "iconPath": "assets/icon/list.png",
         "selectedIconPath": "assets/icon/list-active.png",
         "text": "清单"
@@ -54,6 +54,7 @@
     "van-dropdown-menu": "/miniprogram_npm/@vant/weapp/dropdown-menu/index",
     "van-dropdown-item": "/miniprogram_npm/@vant/weapp/dropdown-item/index",
     "van-switch": "/miniprogram_npm/@vant/weapp/switch/index",
+    "van-slider": "/miniprogram_npm/@vant/weapp/slider/index",
     "btn-fixed": "/components/btn-fixed/index",
     "mp-cells": "/miniprogram_npm/weui-miniprogram/cells/cells",
     "mp-cell": "/miniprogram_npm/weui-miniprogram/cell/cell",

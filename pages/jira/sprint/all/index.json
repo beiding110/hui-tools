@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "sprint",
+  "navigationBarTitleText": "清单",
   "usingComponents": {
     "list-sprint": "../components/list-sprint/index"
   }

@@ -1,2 +1,5 @@
 /* pages/user/print/index.wxss */
 view.table{width:calc(100% - 20px); margin:0 10px; font-size:10px;}
+
+.col-time{width: 100px;}
+.col-state{width: 46px;}

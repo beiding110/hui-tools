@@ -40,6 +40,4 @@
       ></list-sprint>
     </view>
   </mp-tabs>
-
-  <btn-fixed type="primary" bindtap="addHandler"></btn-fixed>
 </view>

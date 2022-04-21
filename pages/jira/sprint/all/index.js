@@ -14,12 +14,10 @@ Page({
     tableData_doing: [],
     tableData_done: [],
 
-    procode: '',
-
     slideButtons_todo: [{
       text: '编辑',
       extClass: 'sprint-button',
-    }, {
+    },{
       type: 'warn',
       text: '删除',
       extClass: 'sprint-button',
@@ -62,42 +60,38 @@ Page({
       value: 'doing'
     }],
   },
-  addHandler() {
-    var search = util.toSearch({
-      procode: this.data.procode
-    });
-    wx.navigateTo({
-      url: '../form/index' + search
-    });
-  },
   getList() {
+    var proList = db.getDB('t_project'),
+      proRowguidMap = {};
+    proList.forEach(item => {
+      proRowguidMap[item.rowguid] = item.proname;
+    });
+
     var list_todo = db.getDB('t_sprint', {
-      dobj: 0,
-      procode: this.data.procode
-    });
+      dobj: 0
+    }).leftJoin('t_project', {}, ['procode', 'rowguid'], ['proname']);
     var list_doing = db.getDB('t_sprint', {
-      dobj: 1,
-      procode: this.data.procode
-    });
+      dobj: 1
+    }).leftJoin('t_project', {}, ['procode', 'rowguid'], ['proname']);
     var list_done = db.getDB('t_sprint', {
-      dobj: 2,
-      procode: this.data.procode
-    });
+      dobj: 2
+    }).leftJoin('t_project', {}, ['procode', 'rowguid'], ['proname']);
+
     this.setData({
       tableData_todo: list_todo,
       tableData_doing: list_doing,
       tableData_done: list_done,
-
-      tabs: [{
-        title: `待办(${list_todo.length})`
-      }, {
-        title: `处理中(${list_doing.length})`
-      }, {
-        title: `完成(${list_done.length})`
-      }]
+      tabs: [
+        {
+          title: `待办(${list_todo.length})`
+        }, {
+          title: `处理中(${list_doing.length})`
+        }, {
+          title: `完成(${list_done.length})`
+        }
+      ]
     });
   },
-
   // 组件内列表数据更新
   updateTableData(e) {
     var detail = e.detail,
@@ -113,9 +107,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      procode: options.procode
-    })
+    
   },
 
   /**
